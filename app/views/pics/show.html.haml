@@ -1,5 +1,6 @@
-%h1 Show Pic
-%h2= @pic.title
+%h1{:class => 'text-info'}= @pic.title
+%hr/
 %p= @pic.description
 
-= link_to "Home", root_path, class:"btn btn-info"
+= link_to "Home", root_path, class:"btn btn-dark"
+= link_to "Edit", edit_pic_path(@pic), class:"btn btn-warning"
