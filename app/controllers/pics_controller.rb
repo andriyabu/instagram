@@ -1,5 +1,5 @@
 class PicsController < ApplicationController
-  before_action :find_pic, only: [:edit,:show]
+  before_action :find_pic, only: [:edit,:show, :update, :destroy]
   def index
   end
 
@@ -20,6 +20,12 @@ class PicsController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+  end
+
+  def destroy
   end
   
 
