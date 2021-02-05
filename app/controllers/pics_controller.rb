@@ -1,6 +1,7 @@
 class PicsController < ApplicationController
   before_action :find_pic, only: [:edit,:show, :update, :destroy]
   def index
+    @pics = Pic.all.order(created_at: :desc)
   end
 
   def new
