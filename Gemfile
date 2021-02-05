@@ -17,20 +17,22 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+#Haml (HTML Abstraction Markup Language)
+gem 'haml', '~> 5.2', '>= 5.2.1'
+# Forms made easy!
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
+# gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'bootstrap', '~> 4.6'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'html2haml', '~> 2.2'
+gem 'erb2haml', '~> 0.1.5'
+gem 'jquery-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'better_errors'
 end
 
 group :development do

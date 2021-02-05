@@ -1,0 +1,8 @@
+= simple_form_for @pic, html: { multipart: true } do |f|
+ .form-group
+  = f.input :title, class:"form-control"
+ .form-group
+  = f.input :description, class:"form-control"
+ .form-group
+  = f.button :submit, class:"btn btn-success"
+ = link_to "Home", root_path, class:"btn btn-dark"
