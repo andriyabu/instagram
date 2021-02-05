@@ -1,5 +1,6 @@
 class PicsController < ApplicationController
   before_action :find_pic, only: [:edit,:show, :update, :destroy]
+  add_flash_types :info, :error, :warning, :success
   def index
     @pics = Pic.all.order(created_at: :desc)
   end
@@ -24,15 +25,24 @@ class PicsController < ApplicationController
   end
 
   def update
-    if @pic.update(pic_params)
-      redirect_to @pic
-    else
-      render 'edit'
-    end
+      if @pic.update(pic_params)
+        flash[:success] = "Object was successfully updated"
+        redirect_to @pic
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
   end
   
-
+  
   def destroy
+    if @pic.destroy
+      flash[:success] = 'Object was successfully deleted.'
+      redirect_to root_path
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to pics_url
+    end
   end
   
 

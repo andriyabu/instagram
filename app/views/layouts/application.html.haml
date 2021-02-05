@@ -11,4 +11,7 @@
  %body.bg-light
   %header
   %main.container.p-5
+   - flash.each do |type,msg|
+    %section.alert.alert-info
+     = msg
    = yield

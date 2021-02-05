@@ -2,5 +2,6 @@
 %hr/
 %p= @pic.description
 
-= link_to "Home", root_path, class:"btn btn-dark"
-= link_to "Edit", edit_pic_path(@pic), class:"btn btn-warning"
+= link_to "Home", root_path, class:"btn btn-sm btn-dark"
+= link_to "Edit", edit_pic_path(@pic), class:"btn btn-sm btn-warning"
+= link_to "Delete", pic_path(@pic), method: :detele, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-danger"
