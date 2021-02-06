@@ -6,11 +6,11 @@ class PicsController < ApplicationController
   end
 
   def new
-    @pic = Pic.new
+    @pic = current_user.pics.build
   end
 
   def create
-    @pic = Pic.new(pic_params)
+    @pic = current_user.pics.build(pic_params)
     if @pic.save
       redirect_to @pic
     else
@@ -33,8 +33,8 @@ class PicsController < ApplicationController
         render 'edit'
       end
   end
-  
-  
+
+
   def destroy
     if @pic.destroy
       flash[:success] = 'Object was successfully deleted.'
@@ -44,7 +44,7 @@ class PicsController < ApplicationController
       redirect_to pics_url
     end
   end
-  
+
 
   private
     def pic_params

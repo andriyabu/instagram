@@ -1,4 +1,8 @@
 %h1{:class => 'text-info'}= @pic.title
+%br
+%p
+Pic by
+= @pic.user.email
 %hr/
 %p= @pic.description
 
