@@ -8,18 +8,19 @@
   = csp_meta_tag
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
- %body.bg-light
-  %nav.navbar.navbar-expand.navbar-dark.bg-dark
+ %body
+  %nav.navbar.navbar-expand.navbar-dark.bg-dark.fixed-top
    = link_to "Instagram", root_path, class:"navbar-brand text-info"
    .collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
      - if user_signed_in?
-      %li.nav-item= link_to "New Pic", new_pic_path, class:"nav-link"
+      %li.nav-item= link_to "Upload New", new_pic_path, class:"nav-link"
+      %li.nva-item= link_to "My Picture", mypics_path, class:"nav-link"
       %li.nav-item= link_to "Setting", edit_user_registration_path, class:"nav-link"
       %li.nav-item= link_to "Sign out", destroy_user_session_path , method: :delete, class:"nav-link"
      - else
       %li.nav-item= link_to "Sign in", new_user_session_path, class:"nav-link"
-  .container.p-5
+  .container
    - flash.each do |type,msg|
     %section.alert.alert-info
      = msg

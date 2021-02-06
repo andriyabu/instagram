@@ -1,14 +1,14 @@
-%section.row.w-100.d-flex.justify-content-center
+%section.row.w-100.d-flex.justify-content-center.mt-5.pt-5
  - @pics.each do |pic|
-  .col-md-7.card.p-0.m-2
-   .w-100.text-center.bg-light.p-3
-    %h1= link_to pic.title, pic_path(pic),class:"text-info"
-   .card-body
-    .w-100.text-center
+  .col-md-7.p-0.m-3.col-md-offset-3.bg-light
+   .w-100
+    .w-100.text-center.mb-2
      = image_tag pic.avatar, class:"w-100"
-    .w-100.tex-left
+    .w-100.text-center
+     %h1= link_to pic.title, pic_path(pic),class:"text-info"
+    .w-100.tex-left.p-3
      %p= truncate(pic.description, length: 200)
-    .w-100
+    .w-100.p-3
      = link_to "Show Pic", pic_path(pic), class:"btn btn-info"
  .w-100.d-flex.justify-content-center
   - if user_signed_in?

@@ -1,23 +1,27 @@
-%section.row.w-100.d-flex.justify-content-center
- .col-md-7.card.p-0.m-2
-  .w-100.text-center.bg-light.p-3
-   %h1{:class => 'text-info'}= @pic.title
-  .card-body
+%section.row.w-100.d-flex.justify-content-center.mt-5.p-5
+ .col-md-7.col-md-offset-3.p-0.m-2.bg-light
+  .w-100
    .w-100.text-center.mb-2
     = image_tag @pic.avatar, class:"w-100"
    .w-100.tex-left
     %span.badge.badge-info
      Pic by
      = @pic.user.email
-   .w-100.text-left
+   .w-100.text-center
+    %h1{:class => 'text-info'}= @pic.title
+   .w-100.text-left.p-3
     %p= @pic.description
-   .w-100
+   .w-100.mb-3.p-3
+    = link_to like_pic_path(@pic), method: :put, class:"btn btn-default" do
+     %span{:height => 24}= octicon "thumbsup"
+     = @pic.get_upvotes.size
+
     - if user_signed_in?
      - if current_user.id == @pic.user_id
-      = link_to "Home", root_path, class:"btn btn-sm btn-dark"
+      = link_to "Home", mypics_path, class:"btn btn-sm btn-dark"
       = link_to "Edit", edit_pic_path(@pic), class:"btn btn-sm btn-warning"
       = link_to "Delete", pic_path(@pic), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-danger"
      - else
-      = link_to "Home", root_path, class:"btn btn-sm btn-dark"
+      = link_to "Home", mypics_path, class:"btn btn-sm btn-dark"
     - else
-     = link_to "Home", root_path, class:"btn btn-sm btn-dark"
+     = link_to "Home", mypics_path, class:"btn btn-sm btn-dark"

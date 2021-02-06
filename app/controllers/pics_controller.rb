@@ -1,8 +1,13 @@
 class PicsController < ApplicationController
-  before_action :find_pic, only: [:edit,:show, :update, :destroy]
+  before_action :find_pic, only: [:edit,:show, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except: [:index, :show]
   add_flash_types :info, :error, :warning, :success
   def index
     @pics = Pic.all.order(created_at: :desc)
+  end
+
+  def mypic
+    @pics = Pic.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new
@@ -43,6 +48,11 @@ class PicsController < ApplicationController
       flash[:error] = 'Something went wrong'
       redirect_to @pic
     end
+  end
+
+  def upvote
+    @pic.liked_by current_user
+    redirect_to @pic
   end
 
 

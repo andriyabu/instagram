@@ -1,0 +1,15 @@
+%section.row.w-100.d-flex.justify-content-sm-between.pt-5.mt-5.flex-wrap
+ - @pics.each do |pic|
+  .col-md-3.p-0.mt-2.mr-1.col-md-offset-3.bg-light.align-self-baseline
+   .w-100
+    .w-100.text-center.mb-2
+     = image_tag pic.avatar, class:"w-100"
+    -# .w-100.text-center
+    -#  %h4= link_to pic.title, pic_path(pic),class:"text-info"
+    -# .w-100.tex-left.p-3
+    -#  %p= truncate(pic.description, length: 50)
+    .w-100.p-3
+     = link_to "Show Pic", pic_path(pic), class:"btn btn-info"
+ .w-100.d-flex.justify-content-center.mt-3.mb-5.bg-light.p-5
+  - if user_signed_in?
+   = link_to "Upload New Picture", new_pic_path, class:"btn btn-md btn-primary"
