@@ -1,11 +1,23 @@
-%h1{:class => 'text-info'}= @pic.title
-%br
-%p
-Pic by
-= @pic.user.email
-%hr/
-%p= @pic.description
-
-= link_to "Home", root_path, class:"btn btn-sm btn-dark"
-= link_to "Edit", edit_pic_path(@pic), class:"btn btn-sm btn-warning"
-= link_to "Delete", pic_path(@pic), method: :detele, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-danger"
+%section.row.w-100.d-flex.justify-content-center
+ .col-md-7.card.p-0.m-2
+  .w-100.text-center.bg-light.p-3
+   %h1{:class => 'text-info'}= @pic.title
+  .card-body
+   .w-100.text-center.mb-2
+    = image_tag @pic.avatar, class:"w-100"
+   .w-100.tex-left
+    %span.badge.badge-info
+     Pic by
+     = @pic.user.email
+   .w-100.text-left
+    %p= @pic.description
+   .w-100
+    - if user_signed_in?
+     - if current_user.id == @pic.user_id
+      = link_to "Home", root_path, class:"btn btn-sm btn-dark"
+      = link_to "Edit", edit_pic_path(@pic), class:"btn btn-sm btn-warning"
+      = link_to "Delete", pic_path(@pic), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-danger"
+     - else
+      = link_to "Home", root_path, class:"btn btn-sm btn-dark"
+    - else
+     = link_to "Home", root_path, class:"btn btn-sm btn-dark"

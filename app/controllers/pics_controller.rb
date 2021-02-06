@@ -41,14 +41,14 @@ class PicsController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = 'Something went wrong'
-      redirect_to pics_url
+      redirect_to @pic
     end
   end
 
 
   private
     def pic_params
-      params.require(:pic).permit(:title, :description)
+      params.require(:pic).permit(:title, :description,:avatar)
     end
 
     def find_pic
