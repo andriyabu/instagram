@@ -9,8 +9,17 @@
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
  %body.bg-light
-  %header
-  %main.container.p-5
+  %nav.navbar.navbar-expand.navbar-dark.bg-dark
+   = link_to "Instagram", root_path, class:"navbar-brand"
+   .collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+     - if user_signed_in?
+      %li.nav-item= link_to "New Pic", new_pic_path, class:"nav-link"
+      %li.nav-item= link_to "Setting", edit_user_registration_path, class:"nav-link"
+      %li.nav-item= link_to "Sign out", destroy_user_session_path, class:"nav-link"
+     - else
+      %li.nav-item= link_to "Sign in", new_session_path, class:"nav-link"
+  .container.p-5
    - flash.each do |type,msg|
     %section.alert.alert-info
      = msg

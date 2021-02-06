@@ -1,7 +1,7 @@
 %section.row
  - @pics.each do |pic|
   %article
-   %h1= link_to pic.title, pic_path(pic)
+   %h1.text-center= link_to pic.title, pic_path(pic)
    %p= truncate(pic.description, length: 200)
    = link_to "Show Pic", pic_path(pic), class:"btn btn-info"
    %hr/
